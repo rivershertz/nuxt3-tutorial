@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <h2>Product ID: {{ id }}</h2>
-    <p>{{ product.title }}</p>
+  <div class="h-[85vh]">
+    <Head>
+      <Title>Nahars Nuxt | {{ product.title }}</Title>
+      <Meta
+        name="description"
+        :content="product.description"
+      ></Meta>
+    </Head>
+    <ProductDetails :data="product" />
   </div>
 </template>
 
@@ -11,6 +17,13 @@
   const url = "https://fakestoreapi.com/products/" + id;
 
   const {data: product} = await useFetch(url, {key: id});
+  if (!product.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Product not found",
+      fatal: true,
+    });
+  }
 
   definePageMeta({
     layout: "products",

@@ -1,15 +1,16 @@
 <template>
-  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+  <div class="h-screen grid-rows-[auto_1fr_auto]">
     <div class="">
       <NuxtLink
         to="/products"
-        class="inline-block p-3 text-4xl"
-        >Merch</NuxtLink
+        class="inline-block p-3 text-2xl"
+      >
+        Merch</NuxtLink
       >
     </div>
     <slot />
     <div>
-      <nav class="border-t border-green-500 py-10 px-5">
+      <nav class="border-t border-green-500 py-5 px-5">
         <ul class="flex gap-16 text-lg">
           <li v-for="route in routes">
             <NuxtLink
